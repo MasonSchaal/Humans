@@ -19,6 +19,15 @@ public class Introducer {
             } else if (person instanceof Youth) {
                 Youth youth = (Youth) person;
                 intro += String.format(" %s goes to %s and is in grade %d.", pronoun, youth.getSchoolName(), youth.getSchoolGrade());
+                if (youth instanceof WilliamAberhartStudent) {
+                    WilliamAberhartStudent abeStudent = (WilliamAberhartStudent) youth;
+                    if ((abeStudent.getHomeRoomTeacher() == null)) {
+                        intro += " Their homeroom is unknown at this time.";
+                    } else {
+                        intro += String.format(" %s belongs to %s's homeroom, which is in room %d.", pronoun, 
+                                abeStudent.getHomeRoomTeacher(), abeStudent.getHomeRoom());
+                    }
+                }
             }
             return intro;
         } catch (Exception e) {
