@@ -23,7 +23,11 @@ public class Human implements Comparable<Human>{
     public static final Comparator<Human> ASSEMBLY_ORDER = new Comparator<Human>() {
         public int compare(Human h1, Human h2) {
             int assemblyCompare = ((Integer) rankOfHuman(h1)).compareTo(rankOfHuman(h2));
-        }
+            if (assemblyCompare != 0) {
+                return assemblyCompare;
+            }
+            Comparator<Human> nameCompare = NAME_ORDER;
+            return nameCompare.compare(h1, h2);        }
     };
 
     private int birthYear;
